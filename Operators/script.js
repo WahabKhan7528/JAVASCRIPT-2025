@@ -1,0 +1,1 @@
+12<14 ? console.log("true"): console.log("false");
