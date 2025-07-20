@@ -254,4 +254,188 @@
 //   let password = "secret password"
 //   console.log(password)
 // })();
-// console.log(password)
+// console.log(password)`
+
+//PRACTICE SET BY CHATGPT
+
+// 📘 1. Function Declarations, Expressions, and Arrow Functions
+// Write a function using:
+
+// Function declaration:
+// function hello(){
+//   console.log("hello world")
+// }
+// hello()
+
+// Function expression
+// let hello = function(){
+//   console.log("hello")
+// }
+// hello()
+
+// Arrow function to return the square of a number.
+
+// let hello = (a)=>{
+//   return a**a
+// }
+// console.log( hello(2))
+
+// What error do you get when calling a function expression before its definition?
+// console.log( hello(2))
+
+// let hello = (a)=>{
+//   return a**a
+// }
+
+//ANSWER : cant access hello before initialization
+
+// Convert the following regular function into an arrow function:
+
+// function greet(name) {
+//   return "Hello " + name;
+// }
+// let greet = (name)=>{
+//   return "Hello " + name;
+// }
+// console.log(greet("arib"))
+
+// 🧩 2. Parameters vs. Arguments
+// Create a function sum with 2 parameters and call it with:
+// 1 argument
+// function sum(a,b){
+//   return a+b
+// }
+// console.log(sum(1))
+// // 3 arguments
+// console.log(sum(1,2,3))
+
+// What gets returned in each case?
+// with just one argument is shows NaN as number + undefined = NaN
+// with extra number of arguments it ignored the extra arguments and just used the required arguments
+
+// What happens if you don't pass any arguments to a function that expects parameters?
+
+// function sum(a,b){
+//   return a+b
+// }
+// console.log(sum())
+
+// It shows NaN in the output.because undefined + undefined = NaN
+
+// 🧂 3. Default, Rest, and Spread Parameters
+// Create a function with a default parameter that greets someone. If no name is given, it should greet "Guest".
+// function greet(name="guest"){
+//   return `welcome ${name}`
+// }
+// console.log(greet())
+
+// Use rest parameters to create a function sumAll(...nums) that returns the total sum of all arguments.
+// function sumAll(...nums){
+//   let sum=0;
+//   nums.forEach(num=>{
+//     sum = sum + num
+//   })
+//   return sum;
+// }
+// console.log(sumAll(1,2,3,4,5))
+
+// 4. first class functions(assign to variables,pass as arguments, return from other functions)
+// Q1: Create a function called `greet` that returns "Hello, world!".
+// Then assign it to a variable `sayHello` and call it.
+// function greet(){
+//   return "Hello, world!";
+// }
+// let sayHello = greet()
+// console.log(sayHello)
+
+// Q2: Write a function `callTwice` that takes another function as an argument
+// and calls it twice. Example usage:
+
+// function sayHi() {
+//   console.log("Hi!");
+// }
+
+// callTwice(sayHi) ➤ should print "Hi!" two times\
+
+
+// function sayHi() {
+//   console.log("Hi!");
+// }
+
+// function callTwice(fn) {
+//   fn(); 
+//   fn();
+// }
+
+// // Now pass the function `sayHi` as an argument
+// callTwice(sayHi);
+
+// Q3: Write a function `createMultiplier` that takes a number `x`
+// and returns another function that takes a number `y` and returns x * y.
+
+// Example:
+// const double = createMultiplier(2);
+// console.log(double(5)); // Output: 10
+// function createMultiplier(x){
+//   return function second(y){
+//     return x*y;
+//   }
+// }
+// let multiply = createMultiplier(5)
+// console.log(multiply(2))
+
+// Q4: Create a function `greetGenerator(name)` that returns another function.
+// That returned function should greet using the saved name.
+
+// const greetArib = greetGenerator("Arib");
+// greetArib(); // Output: Hello, Arib!
+// function greetGenerator(name){
+//   return function(){
+//     return `Hi! ${name}`
+//   }
+// }
+// let greet = greetGenerator("Arib")
+// console.log(greet())
+
+//Q5 Write a function `messageBox()` that stores a message.
+// Return two functions: `setMessage()` and `getMessage()`
+
+// const box = messageBox();
+// box.setMessage("JavaScript is fun!");
+// box.getMessage(); // Output: "JavaScript is fun!"
+
+// function messageBox(msg){
+//   let message = "";
+
+//   function setMessage(newMessage){
+//     message = newMessage;
+//   }
+//   function getMessage(){
+//     return message
+//   }
+
+//   return {setMessage,getMessage};
+// }
+// const box = messageBox();
+// box.setMessage("JavaScript is fun!")
+// console.log(box.getMessage())
+
+// Q6: Write a function `makeAdder(x)` that returns a function.
+// That returned function takes a number `y` and returns `x + y`.
+
+// const add5 = makeAdder(5);
+// console.log(add5(10)); // 15
+// console.log(add5(20)); // 25
+
+// function makeAdder(x){
+//   return function(y){
+//     return x+y
+//   }
+// }
+// let add = makeAdder(2);
+// console.log(add(2))
+
+let IFEE = (function hello(){
+  return "I am an IFEE"
+})()
+console.log(IFEE)
