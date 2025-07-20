@@ -30,6 +30,13 @@
 //   }
 // }
 
+// FOR-EACH LOOP: forEach is a method used to loop through each item in an array and run a function on every item — without returning anything.
+let arr = [11,22,32,39,99]
+
+arr.forEach(function(val){
+  console.log(val + 5)
+})
+
 // CONTINUE-STATMENT (continues to the next skipping the current one like in this block in the if condition we are checking for 92 and 100 if they come they will be ignored and all other numbers will be printed)
 
 // for(let i = 1; i<101; i++){

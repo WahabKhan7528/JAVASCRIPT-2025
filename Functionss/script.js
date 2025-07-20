@@ -435,7 +435,7 @@
 // let add = makeAdder(2);
 // console.log(add(2))
 
-let IFEE = (function hello(){
-  return "I am an IFEE"
-})()
-console.log(IFEE)
+// let IFEE = (function hello(){
+//   return "I am an IFEE"
+// })()
+// console.log(IFEE)
