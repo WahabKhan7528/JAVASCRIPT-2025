@@ -182,3 +182,226 @@
 // })
 // console.log(newScores)
 // console.log(scores)
+
+// MAP ,REDUCE ,AND FILTER:
+
+// "MAP": map() is a built-in array method that creates a new array by applying a function to each element of the original array.In easy words we can say that map is only used when a new array is created on the basis of the data from the previous array
+
+// PRACTICE SET FOR "MAP()"
+// Q1. Double the Numbers
+// Given this array:
+// const nums = [1, 2, 3, 4, 5];
+// Use .map() to return a new array with each number doubled.
+// Output: [2, 4, 6, 8, 10]
+
+// SOL: 
+// const nums = [1, 2, 3, 4, 5];
+// let newNums = nums.map(n=> n+n)
+// console.log(newNums)
+
+// Q2. Convert to Uppercase
+// Given:
+// const names = ["arib", "ali", "zara"];
+// Use .map() to return a new array of all names in uppercase.
+// Output: ["ARIB", "ALI", "ZARA"]
+
+// SOL:
+// const names = ["arib", "ali", "zara"];
+// let newNames = names.map(name=>name.toUpperCase())
+// console.log(newNames)
+
+// Q3. Extract Usernames
+//  Given:
+// const users = [
+//   { id: 1, username: "arib" },
+//   { id: 2, username: "fatima" },
+//   { id: 3, username: "ali" }
+// ];
+// Use .map() to return an array of just the usernames.
+// Output: ["arib", "fatima", "ali"]
+
+//  SOL:
+// const users = [
+//   { id: 1, username: "arib" },
+//   { id: 2, username: "fatima" },
+//   { id: 3, username: "ali" }
+// ];
+// let usersNames = users.map(u=>u.username)
+// console.log(usersNames)
+
+// Q4. Add "Mr." Prefix
+// Given:
+// const names = ["Arib", "Bilal", "Usman"];
+// Use .map() to return: ["Mr. Arib", "Mr. Bilal", "Mr. Usman"]
+
+// SOL:
+
+// const names = ["Arib", "Bilal", "Usman"];
+// let respected = names.map(n=>`Mr. ${n}`)
+// console.log(respected)
+
+// Q5. Calculate Square of Numbers
+// Given:
+// const numbers = [2, 3, 4, 5];
+// Use .map() to return: [4, 9, 16, 25]
+
+//SOL:
+
+// const numbers = [2, 3, 4, 5];
+// let Square = numbers.map(n=>n*n)
+// console.log(Square)
+
+// Q6. Format Products as Strings
+// Given:
+// const products = [
+//   { name: "Shirt", price: 1200 },
+//   { name: "Cap", price: 300 }
+// ];
+// Use .map() to return: ["Shirt - Rs. 1200", "Cap - Rs. 300"]
+
+// SOL:
+// const products = [
+//   { name: "Shirt", price: 1200 },
+//   { name: "Cap", price: 300 }
+// ];
+// let strProds = products.map(product=>`${product.name} - Rs. ${product.price}`)
+// console.log(strProds)
+
+// Q7. Create HTML tags
+// Given:
+// const items = ["Home", "About", "Contact"];
+// Use .map() to return: ["<li>Home</li>", "<li>About</li>", "<li>Contact</li>"]
+
+// SOL:
+
+// const items = ["Home", "About", "Contact"];
+// let htmlConversion = items.map(i=>"<li>" + i +"</li>")
+// console.log(htmlConversion)
+
+// 🧠 Bonus Challenge:
+// Given this nested array:
+// const numbers = [[1, 2], [3, 4], [5, 6]];
+// Use .map() to return: [3, 7, 11] (sum of each pair)
+
+// SOL:
+
+// const numbers = [[1, 2], [3, 4], [5, 6]];
+// let sumOfPairs = numbers.map(pair=>pair[0]+pair[1])
+// console.log(sumOfPairs)
+
+
+// "FILTER": .filter() is a built-in array method that helps you:
+
+            // ✅ Keep only the elements that match a condition
+            // ❌ Remove the ones that don’t
+
+// PRACTICE SET FOR "FILTER":
+// 1. Even Numbers Only
+// Given:
+// const nums = [1, 2, 3, 4, 5, 6];
+// 🧠 Task: Use `.filter()` to return only even numbers.
+
+// SOL:
+
+// const nums = [1, 2, 3, 4, 5, 6];
+// const filtered = nums.filter(n=> n%2===0)
+// console.log(filtered)
+
+// // 2. Filter Names Starting with "A"
+// const names = ["Arib", "Ali", "Fatima", "Zara"];
+// 🧠 Task: Filter names that start with "A"
+
+// SOL:
+
+// const names = ["Arib", "Ali", "Fatima", "Zara"];
+// const aNames = names.filter(n=>n.toLowerCase().startsWith('a'))
+// console.log(aNames)
+
+// 3. Prices Above 1000
+// const items = [
+//   { name: "Laptop", price: 2000 },
+//   { name: "Mouse", price: 400 },
+//   { name: "Keyboard", price: 900 },
+// ];
+// 🧠 Task: Return only items with price > 1000
+
+// SOL:
+
+// const items = [
+//   { name: "Laptop", price: 2000 },
+//   { name: "Mouse", price: 400 },
+//   { name: "Keyboard", price: 900 },
+// ];
+
+// const budget = items.filter(item=>item.price>1000)
+// console.log(budget)
+
+// 4. Filter Falsy Values
+// const values = [0, 1, "", "Hello", null, undefined, "Arib", false];
+// 🧠 Task: Return only truthy values using `.filter()`
+
+// SOL:
+
+// const values = [0, 1, "", "Hello", null, undefined, "Arib", false];
+// const Falsy = values.filter(val=>val)
+
+// console.log(Falsy)
+
+// // 5. Students Who Passed
+// const students = [
+//   { name: "Arib", marks: 85 },
+//   { name: "Ali", marks: 42 },
+//   { name: "Zain", marks: 77 },
+// ];
+// 🧠 Task: Filter students with marks >= 50
+
+// SOL:
+
+// const students = [
+//   { name: "Arib", marks: 85 },
+//   { name: "Ali", marks: 42 },
+//   { name: "Zain", marks: 77 },
+// ];
+
+// const passed = students.filter(s=>s.marks>=50)
+// console.log(passed)
+
+// 6. Words Longer Than 4 Letters
+// const words = ["cat", "giraffe", "hi", "watermelon", "pen"];
+// 🧠 Task: Return only words longer than 4 characters
+
+// SOL:
+
+// const words = ["cat", "giraffe", "hi", "watermelon", "pen"];
+
+// const fourLetters = words.filter(w=>w.length>4)
+// console.log(fourLetters)
+
+// 7. Filter Even Indexed Items
+// const letters = ["a", "b", "c", "d", "e"];
+// 🧠 Task: Return only items at even indexes (0, 2, 4)
+
+// SOL:
+
+// const letters = ["a", "b", "c", "d", "e"];
+// const evenIndexed = letters.filter((l,i)=>i%2===0) // filter has two parameters (value,index)
+// console.log(evenIndexed)
+
+
+// // 8. Online Users Only
+// const users = [
+//   { username: "Arib", online: true },
+//   { username: "Ali", online: false },
+//   { username: "Fatima", online: true },
+// ];
+// 🧠 Task: Filter users where `online` is true
+
+// SOL:
+
+// const users = [
+//   { username: "Arib", online: true },
+//   { username: "Ali", online: false },
+//   { username: "Fatima", online: true },
+// ];
+// const isOnline = users.filter(u=>u.online===true)
+// console.log(isOnline)
