@@ -53,7 +53,22 @@
 // }
 // abcd(1,2,3,4,5,6,7,8,9,10)
 
-//SPREAD: we will study this after the completion of arrays and objects
+// ARRAY DESTRUCTURING :
+// let arr = [1,2,3,4,5];
+// let [a,b,,c] = arr // here[a,b,,c] we ignored the third value and stored the 4th value as c.
+// console.log(a,b,c)
+
+//SPREAD: 
+
+// if we want to copy elements of any array to anyother array like this :
+// let arr = [1,2,3,4,5,6,7,8,9]
+// let arr2 = arr
+// This will be a problem for us because as we know that array is a reference type. So what this means is that if we try to copy like this and make some queries after, it will affect the original array because the copy was not initaited at all.
+
+// SO WHAT TO DO?
+// we will use spread operator:
+// let arr = [1,2,3,4,5,6,7,8,9]
+// let arr2 = [...arr]
 
 
 //CLOSURES -> aik function jo return kara aik or function. aur return hona wala function hamesha use kara parent function ka koi variable

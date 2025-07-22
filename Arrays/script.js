@@ -405,3 +405,90 @@
 // ];
 // const isOnline = users.filter(u=>u.online===true)
 // console.log(isOnline)
+
+
+// "REDUCE": .reduce() is a JavaScript array method that reduces all the elements in an array to a single value, by applying a callback function repeatedly.
+
+// Syntax: 
+// array.reduce((accumulator, currentValue) => {
+//   // logic to combine
+//   return updatedAccumulator;
+// }, initialValue);
+
+// PRACTICE SET FOR reduce():
+
+// 1. Sum all numbers in an array
+// const nums = [1, 2, 3, 4, 5];
+// Expected: 15
+
+// const nums = [1, 2, 3, 4, 5];
+// const sum = nums.reduce((acc,val)=>{
+//   return acc=acc+val
+// },0)
+// console.log(sum)
+
+// 2.Find the product of all numbers
+// const nums = [2, 3, 4];
+// Expected: 24
+
+// const nums = [2, 3, 4];
+// const mul = nums.reduce((acc,val)=>{
+//   return acc=acc*val
+// },1)
+// console.log(mul)
+
+// 3.Turn an array of strings into a single sentence
+// const words = ['I', 'love', 'JavaScript'];
+// Expected: 'I love JavaScript'
+
+// const words = ['I', 'love', 'JavaScript'];
+// const sentence = words.reduce((acc,word)=>{
+//   return acc = `${acc} ${word}`
+// },"")
+// console.log(sentence)
+
+// 4.Count the number of even numbers
+// const nums = [1, 2, 3, 4, 5, 6];
+// Expected: 3
+
+// const nums = [1, 2, 3, 4, 5, 6,7,8];
+// const even = nums.reduce((acc,val)=>{
+//   let counter = 0;
+//   if(val%2===0){
+//     counter++;
+//   }
+//   return acc= acc + counter;
+// },0)
+// console.log(even)
+
+// 5.Find the maximum value in an array
+// const nums = [4, 7, 1, 9, 3];
+// Expected: 9
+
+// const nums = [4, 7, 1, 9, 3];
+// const max = nums.reduce((acc,val)=>{
+//   if(val>acc){
+//     acc = val;
+//   }
+//   return acc
+// },0)
+// console.log(max)
+
+// we can do the same if we use ternary operator combined with this logic:
+
+// const nums = [4, 7, 1, 9, 3];
+// const max = nums.reduce((acc, val) => val > acc ? val : acc, 0);
+// console.log(max)
+
+// 6.Count frequency of element
+// const letters = ['a', 'b', 'a', 'c', 'b', 'a'];
+// Expected: {a: 3, b: 2, c: 1}
+
+// const letters = ['a', 'b', 'a', 'c', 'b', 'a'];
+// const freq = letters.reduce((acc,val)=>{
+//   if(val === 'a' || val === 'b' || val === 'c'){
+//     acc++
+//   }
+//   return acc
+// },0)
+// console.log(freq) 
