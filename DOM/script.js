@@ -3,8 +3,10 @@
 // 1.How to select an html element,
 // 2.changing text,
 // 3.changing the html,
-// 4.attribute,
-// 5.event listners.
+// 4.attribute manipulation,
+// 5.dynamic dom manipulation,
+// 6.style updates,
+
 
 
 // 1.How to select an html element :
@@ -48,7 +50,7 @@
 //  Can insert tags like <b>, <div>, etc.
 //  Be careful — it can overwrite existing content or cause security issues if not handled safely.
 
-// 5. Attribute Manipulation (getAttribute, setAttribute, removeAttribute):
+// 4. Attribute Manipulation (getAttribute, setAttribute, removeAttribute):
 
 // let a = document.querySelector("a")
 // a.href = "https://www.google.com"
@@ -70,3 +72,46 @@
 // let img = document.querySelector("img");
 // img.removeAttribute("width");
 // This will remove the attribute, as if it never existed in HTML.
+
+// 5. Dynamic DOM Manipulation:
+
+// ELEMENT CREATION AND PLACMENT:
+
+// Firstly, create an element:
+// let h1 = document.createElement("h1");
+// Secondly, add some content:
+// h1.textContent="helleo!"
+//  Thirdly, append/prepend the element where you need it by the help of query selectors:
+// document.querySelector("body").prepend("helleo2",h1) //when using append or prepend you can add text here with in this method. there is no need to write another line
+// document.querySelector("body").append("helleo3",h1)
+
+// document.querySelector("body").appendChild(h1)
+// ELEMENT DELETION :
+// h1.remove()
+
+
+// 6. Style Updates using .style and classList(add,remove,toggle):
+
+// Using .style :
+
+// let h1 = document.querySelector("h1")
+// h1.style.color = "red";
+// h1.style.backgroundColor = "grey";
+// h1.style.fontFamily = "Gilroy"
+// h1.style.textTransform = "capitalize"
+
+// Using classList():
+
+// adding a class to an element:
+
+let h1 = document.querySelector("h1")
+console.dir(h1)
+h1.classList.add("huhu") // added
+
+// deleting a class from the element:
+
+h1.classList.remove("huhu") // removed
+
+// toggle (if there is class it will remove it, if there is no class it will add the class) :
+
+h1.classList.toggle("huhu") // added the class as it was removed above
