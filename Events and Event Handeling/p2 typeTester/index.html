@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Tester + Key Visualizer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: sans-serif;
+      background: #111;
+      color: #eee;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 1.5rem;
+    }
+    .challenge, .input-box, .keyboard, .stats, .controls {
+      text-align: center;
+    }
+    .challenge {
+      font-size: 1.5rem;
+      color: #aaa;
+      max-width: 90%;
+    }
+    input {
+      padding: 10px;
+      font-size: 1.2rem;
+      width: 80%;
+      border: none;
+      border-radius: 5px;
+    }
+    .stats p {
+      margin: 5px 0;
+    }
+    #restartBtn {
+      padding: 8px 20px;
+      font-size: 1rem;
+      background: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      margin-top: 20px;
+    }
+    .key {
+      padding: 10px;
+      background: #333;
+      border-radius: 5px;
+      transition: 0.1s;
+      user-select: none;
+    }
+    .key.active {
+      background: #0af;
+      transform: scale(1.1);
+    }
+    select {
+      padding: 6px 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="challenge" id="challenge">Loading...</div>
+    <div class="input-box">
+      <input type="text" id="inputBox" placeholder="Start typing here..." />
+    </div>
+    <div class="stats">
+      <p id="timer">Time: 60s</p>
+      <p id="wpm">WPM: 0</p>
+      <p id="accuracy">Accuracy: 100%</p>
+    </div>
+    <div class="controls">
+      <button id="restartBtn">🔁 Restart</button><br />
+      <label for="timeSelect">Time:</label>
+      <select id="timeSelect">
+        <option value="30">30s</option>
+        <option value="60" selected>60s</option>
+        <option value="90">90s</option>
+      </select>
+    </div>
+    <div class="keyboard" id="virtualKeyboard"></div>
+  </main>
+
+  <script>
+    const challenges = [
+      "The quick brown fox jumps over the lazy dog",
+      "Typing is a skill that improves with practice",
+      "JavaScript makes web pages interactive",
+      "Code more, worry less"
+    ];
+
+    const challengeBox = document.getElementById("challenge");
+    const inputBox = document.getElementById("inputBox");
+    const timerDisplay = document.getElementById("timer");
+    const wpmDisplay = document.getElementById("wpm");
+    const accDisplay = document.getElementById("accuracy");
+    const restartBtn = document.getElementById("restartBtn");
+    const timeSelect = document.getElementById("timeSelect");
+    const virtualKeyboard = document.getElementById("virtualKeyboard");
+
+    let challenge = "";
+    let timeLeft = 60;
+    let timerStarted = false;
+    let interval;
+    let correctChars = 0;
+    let totalTyped = 0;
+
+    const keys = "qwertyuiopasdfghjklzxcvbnm";
+    for (let k of keys) {
+      const div = document.createElement("div");
+      div.classList.add("key");
+      div.id = `key-${k}`;
+      div.textContent = k;
+      virtualKeyboard.appendChild(div);
+    }
+
+    function setNewChallenge() {
+      challenge = challenges[Math.floor(Math.random() * challenges.length)];
+      challengeBox.textContent = challenge;
+    }
+
+    function updateStats() {
+      let wpm = Math.round((correctChars / 5) / ((parseInt(timeSelect.value) - timeLeft) / 60));
+      wpmDisplay.textContent = `WPM: ${isNaN(wpm) ? 0 : wpm}`;
+      let accuracy = Math.round((correctChars / totalTyped) * 100);
+      accDisplay.textContent = `Accuracy: ${isNaN(accuracy) ? 100 : accuracy}%`;
+    }
+
+    function startTimer() {
+      interval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `Time: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          inputBox.disabled = true;
+          let pastScores = JSON.parse(localStorage.getItem("wpmScores")) || [];
+          let finalWPM = parseInt(wpmDisplay.textContent.split(": ")[1]);
+          pastScores.push(finalWPM);
+          localStorage.setItem("wpmScores", JSON.stringify(pastScores));
+        }
+      }, 1000);
+    }
+
+    inputBox.addEventListener("input", () => {
+      if (!timerStarted) {
+        timerStarted = true;
+        timeLeft = parseInt(timeSelect.value);
+        timerDisplay.textContent = `Time: ${timeLeft}s`;
+        startTimer();
+      }
+      const typed = inputBox.value;
+      totalTyped++;
+
+      if (challenge.startsWith(typed)) {
+        correctChars++;
+        inputBox.style.color = "#0f0";
+      } else {
+        inputBox.style.color = "#f00";
+      }
+
+      updateStats();
+
+      if (typed === challenge) {
+        setNewChallenge();
+        inputBox.value = "";
+      }
+    });
+
+    restartBtn.addEventListener("click", () => {
+      clearInterval(interval);
+      timeLeft = parseInt(timeSelect.value);
+      timerStarted = false;
+      inputBox.disabled = false;
+      correctChars = 0;
+      totalTyped = 0;
+      inputBox.value = "";
+      timerDisplay.textContent = `Time: ${timeLeft}s`;
+      wpmDisplay.textContent = `WPM: 0`;
+      accDisplay.textContent = `Accuracy: 100%`;
+      setNewChallenge();
+    });
+
+    timeSelect.addEventListener("change", () => {
+      timeLeft = parseInt(timeSelect.value);
+      timerDisplay.textContent = `Time: ${timeLeft}s`;
+    });
+
+    window.addEventListener("keydown", (e) => {
+      const keyDiv = document.getElementById(`key-${e.key.toLowerCase()}`);
+      if (keyDiv) {
+        keyDiv.classList.add("active");
+        const clickSound = new Audio("https://www.soundjay.com/button/sounds/button-16.mp3");
+        clickSound.volume = 0.3;
+        clickSound.play();
+        setTimeout(() => keyDiv.classList.remove("active"), 150);
+      }
+    });
+
+    // INIT
+    setNewChallenge();
+  </script>
+</body>
+</html>

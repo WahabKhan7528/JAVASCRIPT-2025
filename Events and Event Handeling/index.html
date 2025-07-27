@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        user-select: none;
+      }
+      /* just for event bubbling example 1 */
+      .lt {
+        text-decoration: line-through;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <h1>Helleo, Worlde!</h1>
+  <input type="text"> -->
+
+    <!-- <h1 id="deviceSelection">Select Device</h1>
+  <select>
+    <option value="not selected" selected disabled>Select any device</option>
+    <option value="samsung">Samsung</option>
+    <option value="xiaomi">Xiami</option>
+    <option value="apple">Apple</option>
+    <option value="infinix">Infinix</option>
+  </select> -->
+
+    <!-- Event bubbling example 1 -->
+    <!-- I want that when i click on any li it would have a line through -->
+    <!-- <ul>
+    <li>apple</li>
+    <li>guava</li>
+    <li>grapes</li>
+    <li>banana</li>
+    <li>mango</li>
+   </ul> -->
+   <!-- Event Capturing example 1 -->
+    <!-- <div id="outer" style="padding: 40px; background-color: lightcoral">
+      Outer
+      <div id="inner" style="padding: 30px; background-color: lightblue">
+        Inner
+        <button id="btn">Click Me</button>
+      </div>
+    </div> -->
+    <script src="script.js"></script>
+  </body>
 </html>
