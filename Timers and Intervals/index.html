@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style></style>
-</head>
-<body>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Example 1 for setInterval() and clearInterval() */
+      /* *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html,body{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: grey;
+    }
+    .main{
+      width: 90%;
+      height: 90%;
+      background-color: rgb(45, 44, 44);
+      border-radius: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h1{
+      color: rgba(176, 166, 166, 0.421);
+      font-size: 15rem;
+    } */
+
+      /* Example 1 for setTimeout() and clearTimeout() */
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #1d1c1d, #2e2e2f, #444446);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .glass-alert {
+        display: initial;
+        margin-top: 40px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.5s ease;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Example 1 for setInterval() and clearInterval() -->
+    <!-- <div class="main">
+    <h1></h1>
+  </div> -->
+    <!-- Example 1 for setTimeout() and clearTimeout() -->
+    <div class="glass-alert">🚀 This is a sleek glass-style alert banner!</div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
