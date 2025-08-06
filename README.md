@@ -43,7 +43,7 @@ A beginner-friendly JavaScript learning resource organized by core topics. Each 
 
 - **Loops**
   - for, while, do-while loops
-  - forEach method
+  - forEach method, reduce , filter
   - break, continue
   - Practice questions: printing numbers, even/odd, multiplication table, sum, divisibility, user input simulation, stop at first multiple, skip multiples, etc.
 
